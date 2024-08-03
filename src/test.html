@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Toggle Input</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .password-toggle-button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+        <div class="relative w-80">
+            <input id="password-input" type="password"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+                placeholder="Enter your password" />
+            <button id="toggle-password-visibility" type="button"
+                class="absolute bottom-0 right-0 flex items-center px-3 focus:outline-none password-toggle-button">
+                <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path
+                        d="M10 3a7 7 0 00-7 7v1h1a6 6 0 0112 0h1v-1a7 7 0 00-7-7zm-7 9v1a7 7 0 0014 0v-1H3zM1 10a9 9 0 0118 0v1a9 9 0 01-18 0v-1z" />
+                </svg>
+            </button>   
+        </div>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password-input');
+        const togglePasswordButton = document.getElementById('toggle-password-visibility');
+        const eyeIcon = document.getElementById('eye-icon');
+
+        togglePasswordButton.addEventListener('click', () => {
+            const isPasswordVisible = passwordInput.type === 'text';
+            passwordInput.type = isPasswordVisible ? 'password' : 'text';
+            eyeIcon.setAttribute(
+                'd',
+                isPasswordVisible
+                    ? 'M10 3a7 7 0 00-7 7v1h1a6 6 0 0112 0h1v-1a7 7 0 00-7-7zm-7 9v1a7 7 0 0014 0v-1H3zM1 10a9 9 0 0118 0v1a9 9 0 01-18 0v-1z'
+                    : 'M2.938 12.5A8.952 8.952 0 001 10a9 9 0 0118 0 8.952 8.952 0 00-1.938 2.5 9.06 9.06 0 01-4.62-1.5 7.025 7.025 0 00-7.884 0 9.06 9.06 0 01-4.62 1.5zm.781-1.618a6.987 6.987 0 005.282 1.093 7.015 7.015 0 006.719 0 6.987 6.987 0 005.282-1.093 7.015 7.015 0 00-6.719 0 6.987 6.987 0 00-5.282-1.093zm5.282 4.118a6.993 6.993 0 006.719 0 7.015 7.015 0 01-6.719 0zM5.654 9.897A6.987 6.987 0 0110 9a6.993 6.993 0 014.346 1.897A6.987 6.987 0 0110 11a6.993 6.993 0 01-4.346-1.103z'
+            );
+        });
+    </script>
+</body>
+
+</html>
